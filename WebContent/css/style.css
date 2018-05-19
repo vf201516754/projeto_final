@@ -1,0 +1,129 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	/* style */
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	/* style */
+	background-color: #f1f1f1;
+}
+
+main {
+	/* position */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 120px;
+}
+
+.form-gerar-senha {
+	/* style */
+	width: 326px;
+	background-color: #fff;
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+}
+
+.form-gerar-senha header {
+	/* postion */
+	display: flex;
+	flex-direction: column;
+	align-items:  center;
+	
+	/* style */
+	padding-top: 34px;
+	padding-bottom: 34px;
+	background-color: #9E3667;
+	color: #ffffff;
+	border: 1px solid #9E3667;
+	border-radius: 4px 4px 0 0;
+}
+
+.form-gerar-senha form {
+	/* postion */
+	display: flex;
+	flex-direction: column;
+	align-items:  center;
+	margin-top: 34px;
+}
+
+.form-servico {
+	/* style */
+	width: 256px;
+	color: #cdcdcd;
+}
+
+.form-prioridade, option {
+	/* style */
+	width: 256px;
+	color: #cdcdcd;
+}
+
+.btn-gerar-senha {
+	/* position */
+	margin-bottom: 34px;
+	margin-top: 17px;
+	
+	/* style  */
+	color: #ffffff;
+	background-color: #ec0000;
+}
+
+
+
+.consultar-gerar-senha {
+	/* style */
+	width: 326px;
+	background-color: #fff;
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+}
+
+.consultar-gerar-senha header {
+	/* postion */
+	display: flex;
+	flex-direction: column;
+	align-items:  center;
+	
+	/* style */
+	padding-top: 34px;
+	padding-bottom: 34px;
+	background-color: #ffcc33;
+	color: #ffffff;
+	border: 1px solid #ffcc33;
+	border-radius: 4px 4px 0 0;
+}
+
+
+
+.detalhes-gerar-senha {
+	/* postion */
+	display: flex;
+	flex-direction: column;
+	align-items:  center;
+	margin-top: 34px;
+	/* style */
+	width: 326px;
+	background-color: #fff;
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+}
+
+
+.btn-painel-atendimento {
+	/* position */
+	margin-bottom: 34px;
+	margin-top: 17px;
+	
+	/* style  */
+	color: #ffffff;
+	background-color: #ec0000;
+}
+
+
+.consulta-gerar-senha form {
+
+}
