@@ -13,6 +13,7 @@ import br.usjt.projeto.dao.SenhaDAO;
 import br.usjt.projeto.entity.Atendimento;
 import br.usjt.projeto.entity.Senha;
 import br.usjt.projeto.service.AtendimentoService;
+import br.usjt.projeto.service.SenhaService;
 import br.usjt.projeto.service.ServicoService;
 import br.usjt.projeto.service.SubservicoService;
 
@@ -34,6 +35,9 @@ public class AtendimentoController {
 	
 	@Autowired
 	private AtendimentoService tempoService;
+	
+	@Autowired
+	private SenhaService senhaService;
 	
 	/* PAINÉIS */
 
@@ -70,6 +74,7 @@ public class AtendimentoController {
 	public int cadastrarAtendimento(@RequestParam int senha) {
 		try {
 			atendimentoService.geraAtendimento(senha);
+			senhaService.inicioAtendimento(senha);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -81,13 +86,14 @@ public class AtendimentoController {
 	public int finalizarAtendimento(@RequestParam int senha) {
 		try {
 			atendimentoService.finalizaAtendimento(senha);
-			
+			senhaService.terminoAtendimento(senha);
+			senhaService.pegaTempoFila(senha);
+			//senhaService.pegaTempoAtendimento(senha);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return senha;
 	}
-	
 	
 	
 	@ResponseBody
@@ -143,6 +149,13 @@ public class AtendimentoController {
 	@RequestMapping(value = "/verifica_senha_caixa")
 	public List<Atendimento> chamarProximaSenhaCaixa() {
 		List<Atendimento> atendimento = atendimentoService.buscaProximaSenhaCaixa();
+		return atendimento;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/verifica_ultimas_senhas")
+	public List<Atendimento> buscarUltimasSenhas() {
+		List<Atendimento> atendimento = atendimentoService.buscarUltimasSenhas();
 		return atendimento;
 	}
 }

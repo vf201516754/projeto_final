@@ -1,6 +1,5 @@
 package br.usjt.projeto.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -10,12 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.usjt.projeto.dao.FilaDAO;
 import br.usjt.projeto.dao.SenhaDAO;
-import br.usjt.projeto.dao.ServicoDAO;
 import br.usjt.projeto.entity.Senha;
 import br.usjt.projeto.service.FilaService;
 import br.usjt.projeto.service.SenhaService;
@@ -39,9 +35,6 @@ public class SenhaController {
 	@Autowired
 	private SenhaDAO senhaDAO;
 	
-	@Autowired
-	private ServicoDAO servicoDAO;
-
 	@RequestMapping("index")
 	public String inicio() {
 		return "index";

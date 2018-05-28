@@ -23,16 +23,7 @@ public class Senha {
 
 	@NotNull(message = "Campo codigo nao pode ser nulo.")
 	private String codigo;
-
-	@Column(name = "data_abertura")
-	private Date dataAbertura;
-
-	@Column(name = "data_fechamento")
-	private Date dataFechamento;
 	
-	@NotNull(message = "Campo isActive nao pode ser nulo.")
-	private int isActive;
-
 	@ManyToOne
 	@JoinColumn(name = "id_fila")
 	private Fila fila;
@@ -45,8 +36,30 @@ public class Senha {
 	@JoinColumn(name = "id_subservico")
 	private Subservico subservico;
 	
+	@Column(name = "data_abertura")
+	private Date dataAbertura;
+	
+	@Column(name = "inicio_atendimento")
+	private String inicioAtendimento;
+	
+	@Column(name = "termino_atendimento")
+	private String terminoAtendimento;
+	
+	@Column(name = "tempo_fila")
+	private String tempoFila;
+	
 	@Column(name = "tempo_atendimento")
-	private int tempoAtendimento;
+	private String tempoAtendimento;
+	
+	@Column(name = "prev_inicio_atendimento")
+	private String prevInicioAtendimento;
+	
+	@Column(name = "prev_termino_atendimento")
+	private String prevTerminoAtendimento;
+	
+	@NotNull(message = "Campo isActive nao pode ser nulo.")
+	private int isActive;
+	
 
 	public int getId() {
 		return id;
@@ -80,12 +93,12 @@ public class Senha {
 		this.dataAbertura = dataAbertura;
 	}
 
-	public Date getDatFechamento() {
-		return dataFechamento;
+	public String getTempoFila() {
+		return tempoFila;
 	}
 
-	public void setDataFechamento(Date dataFechamento) {
-		this.dataFechamento = dataFechamento;
+	public void setTempoFila(String tempoFila) {
+		this.tempoFila = tempoFila;
 	}
 	
 	public Servico getServico() {
@@ -120,19 +133,53 @@ public class Senha {
 		this.isActive = isActive;
 	}
 	
-	public int getTempoAtendimento() {
+	public String getTempoAtendimento() {
 		return tempoAtendimento;
 	}
 	
-	public void setTempoAtendimento(int tempoAtendimento) {
+	public void setTempoAtendimento(String tempoAtendimento) {
 		this.tempoAtendimento = tempoAtendimento;
 	}
+	
+	public String getInicioAtendimento() {
+		return inicioAtendimento;
+	}
+	
+	public void setInicioAtendimento(String inicioAtendimento) {
+		this.inicioAtendimento = inicioAtendimento;
+	}
+	
+	public String getTerminoAtendimento() {
+		return terminoAtendimento;
+	}
+	
+	public void setTerminoAtendimento(String terminoAtendimento) {
+		this.terminoAtendimento = terminoAtendimento;
+	}
+	
+	public String getPrevInicioAtendimento() {
+		return prevInicioAtendimento;
+	}
+	
+	public void setPrevInicioAtendimento(String prevInicioAtendimento) {
+		this.prevInicioAtendimento = prevInicioAtendimento;
+	}
+	
+	public String getPrevTerminoAtendimento() {
+		return prevTerminoAtendimento;
+	}
+	
+	public void setPrevTerminoAtendimento(String prevTerminoAtendimento) {
+		this.prevTerminoAtendimento = prevTerminoAtendimento;
+	}
+	
 	
 
 	@Override
 	public String toString() {
 		return "Senha [id=" + id + ", numero=" + numero + ", codigo=" + codigo + ", dataAbertura=" + dataAbertura
-				+ ", dataFechamento=" + dataFechamento + ", fila=" + fila + "]";
+				+ ", tempoFila=" + tempoFila + ", fila=" + fila + "]";
 	}
+
 
 }

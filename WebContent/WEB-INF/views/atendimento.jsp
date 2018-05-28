@@ -304,62 +304,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>UE002N</td>
-                            <td>Normal</td>
-                            <td>Aguardando atendimento</td>
-                            <td>14:00:00</td>
-                            <td>00:10:00</td>
-                            <td>00:10:00</td>
-                        </tr>
-                        <tr>
-                            <td>UE002N</td>
-                            <td>Normal</td>
-                            <td>Aguardando atendimento</td>
-                            <td>14:00:00</td>
-                            <td>00:10:00</td>
-                            <td>00:10:00</td>
-                        </tr>
-                        <tr>
-                            <td>UE002N</td>
-                            <td>Normal</td>
-                            <td>Aguardando atendimento</td>
-                            <td>14:00:00</td>
-                            <td>00:10:00</td>
-                            <td>00:10:00</td>
-                        </tr>
-                        <tr>
-                            <td>UE002N</td>
-                            <td>Normal</td>
-                            <td>Aguardando atendimento</td>
-                            <td>14:00:00</td>
-                            <td>00:10:00</td>
-                            <td>00:10:00</td>
-                        </tr>
-                        <tr>
-                            <td>UE002N</td>
-                            <td>Normal</td>
-                            <td>Aguardando atendimento</td>
-                            <td>14:00:00</td>
-                            <td>00:10:00</td>
-                            <td>00:10:00</td>
-                        </tr>
-                        <tr>
-                            <td>UE002N</td>
-                            <td>Normal</td>
-                            <td>Aguardando atendimento</td>
-                            <td>14:00:00</td>
-                            <td>00:10:00</td>
-                            <td>00:10:00</td>
+                            
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-
     </div>
-    </div>
-
-
 </body>
 
 </html>

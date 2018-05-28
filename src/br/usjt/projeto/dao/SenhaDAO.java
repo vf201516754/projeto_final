@@ -3,6 +3,7 @@ package br.usjt.projeto.dao;
 import java.io.IOException;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class SenhaDAO {
 		query.setParameter("fila", fila.getId());
 		return (Senha) query.getSingleResult();
 	}
+	
 	
 	public Senha carregarServico(Senha senha) {
 		Query query =  manager.createQuery("select s from Senha s where id = :servico");
@@ -97,9 +99,31 @@ public class SenhaDAO {
 		query.executeUpdate();
 	}
 	
-	public void inserirTempoDeAtendimento(int tempo) {
-		Query query = manager.createQuery("update Senha set tempo_atendimento = :tempo");
-		query.setParameter("tempo_atendimento", tempo);
+	public void inserirInicioAtendimento(int senha, String data) {
+		Query query = manager.createQuery("update Senha set inicio_atendimento = :data where id = :senha");
+		query.setParameter("data", data);
+		query.setParameter("senha", senha);
+		query.executeUpdate();
+	}
+	
+	public void inserirTerminoAtendimento(int senha, String data) {
+		Query query = manager.createQuery("update Senha set termino_atendimento = :data where id = :senha");
+		query.setParameter("data", data);
+		query.setParameter("senha", senha);
+		query.executeUpdate();
+	}
+	
+	public void inserirTempoDeAtendimento(int senha, String tempo) {
+		Query query = manager.createQuery("update Senha set tempo_atendimento = :tempo where id = :senha");
+		query.setParameter("tempo", tempo);
+		query.setParameter("senha", senha);
+		query.executeUpdate();
+	}
+	
+	public void inserirTempoNaFila(int senha, String tempo) {
+		Query query = manager.createQuery("update Senha set tempo_fila = :tempo where id = :senha");
+		query.setParameter("tempo", tempo);
+		query.setParameter("senha", senha);
 		query.executeUpdate();
 	}
 

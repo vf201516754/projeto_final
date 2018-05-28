@@ -269,10 +269,10 @@
 							<h3 class="style-titulo"><fmt:formatDate pattern="HH:mm:ss" value="${senha.dataAbertura}"></fmt:formatDate></h3>
 							
 							<h4 class="style-subtitulo">Previsão início de atendimento:</h4>
-							<h3 class="style-titulo"></h3>
+							<h3 class="style-titulo">${senha.prevInicioAtendimento} minutos</h3>
 														
 							<h4 class="style-subtitulo">Previsão termino de atendimento:</h4>
-							<h3 class="style-titulo"></h3>
+							<h3 class="style-titulo">${senha.prevTerminoAtendimento} minutos</h3>
 						</div>
 					</div>
 

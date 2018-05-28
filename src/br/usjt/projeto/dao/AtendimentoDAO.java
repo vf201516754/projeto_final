@@ -53,6 +53,7 @@ public class AtendimentoDAO {
 		queryFinalizaSenha.setParameter("senha", senha);
 		queryFinalizaSenha.executeUpdate();
 	}
+	
 
 	public void encaminharAtendimento(int subservico, int senha) {
 		Query query = manager.createQuery("update Senha set id_subservico = :subservico where id = :senha");
@@ -84,4 +85,12 @@ public class AtendimentoDAO {
 		query.setMaxResults(1);
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Atendimento> buscarUltimasSenhas() {
+		Query query = manager.createQuery("select a from Atendimento a inner join a.senha where a.senha.isActive = 1");
+		query.setMaxResults(6);
+		return query.getResultList();
+	}
+	
 }
