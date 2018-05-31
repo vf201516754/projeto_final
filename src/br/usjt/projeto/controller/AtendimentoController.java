@@ -88,7 +88,7 @@ public class AtendimentoController {
 			atendimentoService.finalizaAtendimento(senha);
 			senhaService.terminoAtendimento(senha);
 			senhaService.pegaTempoFila(senha);
-			//senhaService.pegaTempoAtendimento(senha);
+			senhaService.pegaTempoAtendimento(senha);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

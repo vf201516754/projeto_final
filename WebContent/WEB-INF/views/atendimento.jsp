@@ -15,6 +15,8 @@
 
     <!-- Site Properties -->
     <title>Cartorio-de-Notas - Atendimento</title>
+    <link rel="shortcut icon" href="img/favicon.ico">
+	
     <link rel="stylesheet" type="text/css" href="semantic/components/reset.css">
     <link rel="stylesheet" type="text/css" href="semantic/components/site.css">
 
@@ -38,8 +40,7 @@
     <link rel="stylesheet" type="text/css" href="semantic/components/table.css">
     <link rel="stylesheet" type="text/css" href="semantic/components/card.css">
     
-    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+
 
 
 

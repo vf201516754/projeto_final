@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -60,8 +61,8 @@ public class SenhaService {
 		novaSenha.setNumero(ultimaSenha.getNumero() + 1);
 		novaSenha.setCodigo(createCodigo(fila, servico, novaSenha.getNumero()));
 		novaSenha.setTempoAtendimento("0");
-		novaSenha.setPrevInicioAtendimento(prevInicioAtendimento());
-		novaSenha.setPrevTerminoAtendimento("0");
+		novaSenha.setPrevInicioAtendimento(prevInicioAtendimento(siglaFila));
+		novaSenha.setPrevTerminoAtendimento(prevTerminoAtendimento(siglaFila));
 		novaSenha.setIsActive(0);
 		
 		return dao.gerarSenha(novaSenha);
@@ -166,111 +167,104 @@ public class SenhaService {
 	}		
 	
 	//PREVISAO DE INICIO DE ATENDIMENTO//
-	public String prevInicioAtendimento() {
-		return previsaoInicioAtendimento(dao.carregarTodasSenha());
+	public String prevInicioAtendimento(String siglaFila) {
+		return previsaoInicioAtendimento(dao.carregarTodasSenha(), siglaFila);
 	}
 	
 	public void pegaTempoFila(int senha) {
 		tempoNaFila(dao.carregarSenha(senha));
 	}
 	
-	/*public String previsaoInicioAtendimento(List<Senha> senhas) {
-		int tamanhoListaSenha = senhas.size();
-		int total = 5;
-		int acumulador = 0;
+	
+	public String previsaoInicioAtendimento(List<Senha> senhas, String siglaFila) {
 		String prevIniAten = null;
-		for(int i = senhas.size(); i == senhas.size()-6; i --) {
-			try{
-				acumulador = Integer.parseInt(senhas.get(i).getTempoFila());
-				total += acumulador;
-				System.out.println("teste 1" + total);
-				int media = senhas.size() * (total / tamanhoListaSenha);
-				if(media == 0) {
-					media = 5;
-					System.out.println("teste 2 media " + media);
+		int acumulador = 0;
+		int tempoFila = 0;
+		int mediaTempoFila = 0;
+		int contPref = 0;
+		int contNorm = 0;
+		
+		for (Iterator<Senha> iterator = senhas.iterator(); iterator.hasNext(); ) {  
+			try {
+				Senha s = (Senha) iterator.next();
+				if(s.getFila().getId() == 1) {
+					contPref++;
 				}
-				prevIniAten = Integer.toString(media);
-				System.out.println(total + " teste 3minutos");
+				else {
+					contNorm++;
+				}
+				tempoFila = Integer.parseInt(s.getTempoFila());
+				acumulador += tempoFila;
+				System.out.println (acumulador);  
 			} catch (Exception e) {
 				
 			}
-
 		}
-		
-		System.out.println(prevIniAten + "minutos");
-		return prevIniAten;
-	}*/
-	public String previsaoInicioAtendimento(List<Senha> senhas) {
-		int tempoNaFila = 0;
-		int acumulador = 0;
-		int contador = 0;
-		int mediaTempoNaFila = 0;
-		int tamanhoDaFila = senhas.size();
-		
-
-		for (int i = 0; i <= tamanhoDaFila; i++) {
-			try {
-				tempoNaFila = Integer.parseInt(senhas.get(i).getTempoFila()); 
-				acumulador += tempoNaFila;
-				mediaTempoNaFila = acumulador / tamanhoDaFila;
-				System.out.println("soma tempo na fila é de: " + tempoNaFila);
-			} catch(Exception e) {
-				
+		System.out.println("aqui" + contNorm);
+		System.out.println("aqui" + contPref);
+		if(siglaFila.equals("P")) {
+			mediaTempoFila = acumulador / (contNorm + contPref);
+			mediaTempoFila *= contPref;
+			if(mediaTempoFila == 0) {
+				mediaTempoFila += 5;
 			}
-			
+			prevIniAten = Integer.toString(mediaTempoFila);
+			return prevIniAten;
+		} else {
+			mediaTempoFila = acumulador / (contNorm + contPref);
+			mediaTempoFila *= (contNorm + contPref);
+			if(mediaTempoFila == 0) {
+				mediaTempoFila += 5;
+			}
+			prevIniAten = Integer.toString(mediaTempoFila);
+			return prevIniAten;
 		}
-		System.out.println("soma tempo na fila é de: " + acumulador);
 		
-		mediaTempoNaFila = tempoNaFila / 3;
-		System.out.println("media tempo na fila é de: " + mediaTempoNaFila);
-		
-		for(int i = 0; i <= senhas.size()-1; i ++) {
-			try {
-				if(senhas.get(i).getFila().getId() == 1) {
-					contador++;
-				}
-			} catch (Exception e) { 
-				
-			} 
-		}
-		String prevIniAten = Integer.toString(mediaTempoNaFila * contador);
-		System.out.println("previsao de tempo na fila é de: " + prevIniAten);
-		
-		return prevIniAten;
 	}
 	
 	
 	//PREVISÃO DE TERMINO DE ATENDIMENTO//
-	public String prevTerminoAtendimento() {
-		return previsaoTerminoAtendimento(dao.carregarTodasSenha());
+	public String prevTerminoAtendimento(String siglaFila) {
+		return previsaoTerminoAtendimento(dao.carregarTodasSenha(), siglaFila);
 	}
 	
 	public void pegaTempoAtendimento(int senha) {
 		tempoAtendimento(dao.carregarSenha(senha));
 	}
 	
-	public String previsaoTerminoAtendimento(List<Senha> senhas) {
-		int tamanhoListaSenha = senhas.size();
-		int total = 5;
-		int acumulador = 0;
+	public String previsaoTerminoAtendimento(List<Senha> senhas, String siglaFila) {
 		String prevTerAten = null;
-		for(int i = senhas.size(); i == senhas.size()-6; i --) {
-			try{
-				acumulador = Integer.parseInt(senhas.get(i).getTempoAtendimento());
-				total += acumulador;
-				if(total == 0) {
-					total = 5;				
+		int acumulador = 0;
+		int tempoFila = 0;
+		int mediaTempoFila = 0;
+		int contPref = 0;
+		int contNorm = 0;
+		
+		for (Iterator<Senha> iterator = senhas.iterator(); iterator.hasNext(); ) {  
+			try {
+				Senha s = (Senha) iterator.next();
+				if(s.getFila().getId() == 1) {
+					contPref++;
 				}
-				
-				
+				else {
+					contNorm++;
+				}
+				tempoFila = Integer.parseInt(s.getTempoFila());
+				acumulador += tempoFila;
+				System.out.println (acumulador);  
 			} catch (Exception e) {
 				
 			}
-
 		}
-		prevTerAten = Integer.toString(5 + (total / tamanhoListaSenha));
-		System.out.println(prevTerAten + "minutos");
+		System.out.println("aqui" + contNorm);
+		System.out.println("aqui" + contPref);
+		mediaTempoFila = acumulador / (contNorm + contPref);
+		prevTerAten = Integer.toString(mediaTempoFila);
+		if(mediaTempoFila == 0) {
+			mediaTempoFila += 5;
+		}
 		return prevTerAten;
+		
 	}
 	
 }
