@@ -37,6 +37,9 @@
     <link rel="stylesheet" type="text/css" href="semantic/components/dropdown.css">
     <link rel="stylesheet" type="text/css" href="semantic/components/table.css">
     <link rel="stylesheet" type="text/css" href="semantic/components/card.css">
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
 
 
 
@@ -212,20 +215,20 @@
     <div class="ui large top fixed hidden menu">
         <div class="ui container">
             <a href="index.html" class="item">Home</a>
-            <a href="form_senha" class="item">Gerar Senha</a>
-            <a href="painel_senhas" class="active item">Painel de Senhas</a>
-            <a href="painel_servico" class="item">Painel de Serviços</a>
-            <a href="painel_subservico" class="item">Painel de Subserviços</a>
+            <a href="form_senha" class="item">Gerar senha</a>
+            <a href="painel_senhas" class="active item">Painel senhas</a>
+            <a href="painel_servico" class="item">Painel serviços</a>
+            <a href="painel_subservico" class="item">Painel subserviços</a>
         </div>
     </div>
 
     <!-- Sidebar Menu -->
     <div class="ui vertical inverted sidebar menu">
         <a href="index.html" class="item">Home</a>
-        <a href="form_senha" class="item">Gerar Senha</a>
-        <a href="painel_senhas" class="active item">Painel de Senhas</a>
-        <a href="painel_servico" class="item">Painel de Serviços</a>
-        <a href="painel_subservico" class="item">Painel de Subserviços</a>
+        <a href="form_senha" class="item">Gerar senha</a>
+        <a href="painel_senhas" class="active item">Painel senhas</a>
+        <a href="painel_servico" class="item">Painel serviços</a>
+        <a href="painel_subservico" class="item">Painel subserviços</a>
     </div>
 
     <div class="pusher">
@@ -237,10 +240,10 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <a href="index.html" class="item">Home</a>
-                    <a href="form_senha" class="item">Gerar Senha</a>
-                    <a href="painel_senhas" class="active item">Painel de Senhas</a>
-                    <a href="painel_servico" class="item">Painel de Serviços</a>
-                    <a href="painel_subservico" class="item">Painel de Subserviços</a>
+                    <a href="form_senha" class="item">Gerar senha</a>
+                    <a href="painel_senhas" class="active item">Painel senhas</a>
+                    <a href="painel_servico" class="item">Painel serviços</a>
+                    <a href="painel_subservico" class="item">Painel subserviços</a>
                 </div>
 
                 <div class="ui link cards">
@@ -254,7 +257,6 @@
                                     </span>
                                     <h2 id="tipoSenha"></h2>
                                     <h1 id="codSenha"></h1>
-                                    <h5 id="guiche">Balcão 11</h5>
                                 </h3>
                             </div>
                         </div>
@@ -269,7 +271,6 @@
                                     </span>
                                     <h2 id="tipoSenha"></h2>
                                     <h1 id="codSenha"></h1>
-                                    <h5 id="guiche">Balcão 11</h5>
                                 </h3>
                             </div>
                         </div>
@@ -284,7 +285,6 @@
                                     </span>
                                     <h2 id="tipoSenha"></h2>
                                     <h1 id="codSenha"></h1>
-                                    <h5 id="guiche">Balcão 11</h5>
                                 </h3>
                             </div>
                         </div>

@@ -1,12 +1,12 @@
 $(function(){
     function intervalo(){
-        //myVar1 = setInterval(verificaNovaSenhaAtendimento, 2000);
-        //myVar2 = setInterval(verificaNovaSenhaAutenticacao, 1000);
-        //myVar3 = setInterval(verificaNovaSenhaCaixa, 1000);
+        myVar1 = setInterval(verificaNovaSenhaAtendimento, 2000);
+        myVar2 = setInterval(verificaNovaSenhaAutenticacao, 1000);
+        myVar3 = setInterval(verificaNovaSenhaCaixa, 1000);
         myVar4 = setInterval(ultimasSenhas, 2000);
     }
     intervalo();
-    /*
+    
 	function verificaNovaSenhaAtendimento(){
         $.ajax({
             type    : 'POST',
@@ -51,7 +51,7 @@ $(function(){
         .fail(function(){
             console.log('error');
         })
-    };*/
+    };
     function ultimasSenhas(){
     	var i = 0;
         $.ajax({
@@ -65,6 +65,9 @@ $(function(){
         				'<td>'+ data[i].senha['codigo'] + '</td>',
         				'<td>'+ data[i].senha['fila']['nome'] + '</td>',
         				'<td>'+ data[i].senha['isActive'] + '</td>',
+        				'<td>'+ data[i].senha['dataAbertura'] +'</td>',
+        				'<td>'+ data[i].senha['prevInicioAtendimento'] + ' minutos' + '</td>',
+        				'<td>'+ data[i].senha[''] +'</td>',
         				'</tr>'
         		);
         	}

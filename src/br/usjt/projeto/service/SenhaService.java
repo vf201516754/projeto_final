@@ -8,6 +8,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -60,7 +61,7 @@ public class SenhaService {
 		novaSenha.setCodigo(createCodigo(fila, servico, novaSenha.getNumero()));
 		novaSenha.setTempoAtendimento("0");
 		novaSenha.setPrevInicioAtendimento(prevInicioAtendimento());
-		novaSenha.setPrevTerminoAtendimento(prevTerminoAtendimento());
+		novaSenha.setPrevTerminoAtendimento("0");
 		novaSenha.setIsActive(0);
 		
 		return dao.gerarSenha(novaSenha);
@@ -173,25 +174,71 @@ public class SenhaService {
 		tempoNaFila(dao.carregarSenha(senha));
 	}
 	
-	public String previsaoInicioAtendimento(List<Senha> senhas) {
+	/*public String previsaoInicioAtendimento(List<Senha> senhas) {
 		int tamanhoListaSenha = senhas.size();
 		int total = 5;
 		int acumulador = 0;
 		String prevIniAten = null;
-		for(int i = 0; i <= senhas.size(); i ++) {
+		for(int i = senhas.size(); i == senhas.size()-6; i --) {
 			try{
 				acumulador = Integer.parseInt(senhas.get(i).getTempoFila());
 				total += acumulador;
-				System.out.println(total + "minutos");
+				System.out.println("teste 1" + total);
+				int media = senhas.size() * (total / tamanhoListaSenha);
+				if(media == 0) {
+					media = 5;
+					System.out.println("teste 2 media " + media);
+				}
+				prevIniAten = Integer.toString(media);
+				System.out.println(total + " teste 3minutos");
 			} catch (Exception e) {
 				
 			}
 
 		}
-		prevIniAten = Integer.toString(total / tamanhoListaSenha);
+		
 		System.out.println(prevIniAten + "minutos");
 		return prevIniAten;
+	}*/
+	public String previsaoInicioAtendimento(List<Senha> senhas) {
+		int tempoNaFila = 0;
+		int acumulador = 0;
+		int contador = 0;
+		int mediaTempoNaFila = 0;
+		int tamanhoDaFila = senhas.size();
+		
+
+		for (int i = 0; i <= tamanhoDaFila; i++) {
+			try {
+				tempoNaFila = Integer.parseInt(senhas.get(i).getTempoFila()); 
+				acumulador += tempoNaFila;
+				mediaTempoNaFila = acumulador / tamanhoDaFila;
+				System.out.println("soma tempo na fila é de: " + tempoNaFila);
+			} catch(Exception e) {
+				
+			}
+			
+		}
+		System.out.println("soma tempo na fila é de: " + acumulador);
+		
+		mediaTempoNaFila = tempoNaFila / 3;
+		System.out.println("media tempo na fila é de: " + mediaTempoNaFila);
+		
+		for(int i = 0; i <= senhas.size()-1; i ++) {
+			try {
+				if(senhas.get(i).getFila().getId() == 1) {
+					contador++;
+				}
+			} catch (Exception e) { 
+				
+			} 
+		}
+		String prevIniAten = Integer.toString(mediaTempoNaFila * contador);
+		System.out.println("previsao de tempo na fila é de: " + prevIniAten);
+		
+		return prevIniAten;
 	}
+	
 	
 	//PREVISÃO DE TERMINO DE ATENDIMENTO//
 	public String prevTerminoAtendimento() {
@@ -207,17 +254,21 @@ public class SenhaService {
 		int total = 5;
 		int acumulador = 0;
 		String prevTerAten = null;
-		for(int i = 0; i <= senhas.size(); i ++) {
+		for(int i = senhas.size(); i == senhas.size()-6; i --) {
 			try{
 				acumulador = Integer.parseInt(senhas.get(i).getTempoAtendimento());
 				total += acumulador;
-				System.out.println(total + "minutos");
+				if(total == 0) {
+					total = 5;				
+				}
+				
+				
 			} catch (Exception e) {
 				
 			}
 
 		}
-		prevTerAten = Integer.toString(total / tamanhoListaSenha);
+		prevTerAten = Integer.toString(5 + (total / tamanhoListaSenha));
 		System.out.println(prevTerAten + "minutos");
 		return prevTerAten;
 	}
