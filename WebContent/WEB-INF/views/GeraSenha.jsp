@@ -248,7 +248,7 @@
 								<div class="ui stacked segment">
 									<div class="form-servico">
 										<select class="form-control ui dropdown" name="servico" id="servico">
-											<option value=""></option>
+											<option value="">Selecione um serviço</option>
 											<c:forEach var="servico" items="${servicos}">
 												<option value="${servico.sigla}">${servico.nome}</option>
 											</c:forEach>
@@ -256,7 +256,7 @@
 									</div>
 									<div class="form-prioridade">
 										<select class="form-control ui dropdown" name="fila" id="fila">
-											<option value=""></option>
+											<option value="">Selecione um fila</option>
 											<c:forEach var="fila" items="${filas}">
 												<option value="${fila.sigla}">${fila.nome}</option>
 											</c:forEach>

@@ -151,10 +151,8 @@ public class SenhaService {
         int segundosIncioAtendimento = Integer.parseInt(inicioAtendimento.substring(17,19));
         
 		String terminoAtendimento = String.valueOf(senha.getTempoAtendimento());
-		System.out.println("aqui" + terminoAtendimento);
         int horaTerminoAtendimento = Integer.parseInt(terminoAtendimento.substring(11,13));
         int minutoTerminoAtendimento = Integer.parseInt(terminoAtendimento.substring(14,16));
-        System.out.println("aqui minuto" + minutoTerminoAtendimento);
         int segundosTerminoAtendimento = Integer.parseInt(terminoAtendimento.substring(17,19));
         
 		LocalTime horaCheg = LocalTime.of(horaIncioAtendimento , minutoIncioAtendimento , segundosIncioAtendimento );
@@ -259,10 +257,11 @@ public class SenhaService {
 		System.out.println("aqui" + contNorm);
 		System.out.println("aqui" + contPref);
 		mediaTempoFila = acumulador / (contNorm + contPref);
-		prevTerAten = Integer.toString(mediaTempoFila);
 		if(mediaTempoFila == 0) {
 			mediaTempoFila += 5;
 		}
+		prevTerAten = Integer.toString(mediaTempoFila);
+
 		return prevTerAten;
 		
 	}
